@@ -3,8 +3,8 @@ import pickle
 import numpy as np
 
 app = Flask(__name__)
-model_titanic = pickle.load(open('./algos/model_titanic_nom.pkl', 'rb')) # loading the trained model
-model_iris = pickle.load(open('./algos/model_iris_nom.pkl','rb'))
+model_titanic = pickle.load(open('./models/model_titanic_nom.pkl', 'rb')) # loading the trained model
+model_iris = pickle.load(open('./models/model_iris_nom.pkl','rb'))
 
 @app.route('/') # Homepage
 def home():
@@ -53,4 +53,4 @@ def predict_titanic():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run('0.0.0.0')
