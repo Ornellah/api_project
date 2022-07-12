@@ -1,4 +1,3 @@
-# from model_titanic import survie
 from ipynb.fs.full.model_titanic import *
 
 def test_survie():
