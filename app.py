@@ -58,7 +58,6 @@ def predict_titanic():
 def predict_death():
     
     features = request.get_json()
-    print(features)
     X = [[features['pclass'],features['sex'],features['age']]]
     prediction = model_titanic.predict(X)
 
@@ -69,7 +68,6 @@ def predict_death():
 def predict_species():
     
     features = request.get_json()
-    print(features)
     X = [[features['SepalLengthCm'],features['SepalWidthCm'],features['PetalLengthCm'],features['PetalWidthCm']]]
     prediction = model_iris.predict(X)
 
@@ -78,5 +76,4 @@ def predict_species():
 
 
 if __name__ == "__main__":
-    # app.run('0.0.0.0')
-    app.run(debug=True)
+    app.run('0.0.0.0')
