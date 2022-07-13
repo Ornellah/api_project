@@ -1,10 +1,15 @@
 from flask import Flask, render_template, jsonify, request
 import pickle
 import numpy as np
+import json
 
 app = Flask(__name__)
 model_titanic = pickle.load(open('./models/model_titanic_nom.pkl', 'rb')) # loading the trained model
 model_iris = pickle.load(open('./models/model_iris_nom.pkl','rb'))
+
+
+####### Avec interface ########
+
 
 @app.route('/') # Homepage
 def home():
@@ -39,18 +44,39 @@ def predict_titanic():
     '''
     
     # retrieving values from form
-    init_features = [int(x) for x in request.form.values()]
-    # final_features = [np.array(request.form.values()).reshape(1,-1)]
-    data = request.form
-    pclass = data['pclass']
-    sex = data['sex']
-    age = data['age']
-    x=np.array([pclass,sex,age]).reshape(1,3)
-    prediction = model_titanic.predict(x) # making prediction
+    features = [[int(x) for x in request.form.values()]]
+    prediction = model_titanic.predict(features) # making prediction
 
 
     return render_template('predict_titanic.html', prediction_text='Predicted Class: {}'.format(prediction)) # rendering the predicted result
 
 
+
+####### Sans interface ########
+
+@app.route('/titanic_death', methods=['POST'])
+def predict_death():
+    
+    features = request.get_json()
+    print(features)
+    X = [[features['pclass'],features['sex'],features['age']]]
+    prediction = model_titanic.predict(X)
+
+    return jsonify(prediction[0])
+
+
+@app.route('/iris_species', methods=['POST'])
+def predict_species():
+    
+    features = request.get_json()
+    print(features)
+    X = [[features['SepalLengthCm'],features['SepalWidthCm'],features['PetalLengthCm'],features['PetalWidthCm']]]
+    prediction = model_iris.predict(X)
+
+    return jsonify(prediction[0])
+
+
+
 if __name__ == "__main__":
-    app.run('0.0.0.0')
+    # app.run('0.0.0.0')
+    app.run(debug=True)
