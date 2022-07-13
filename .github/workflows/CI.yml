@@ -5,21 +5,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: build docker image
+        run : 
+          docker build -t test_HO/test:latest .
+      - name: run docker image
+        run : 
+          docker run -p 5000:5000 -d test_HO/test:latest
       - name: Run tests
-        run : |
+        run :
           RUN pip install flask
           python app.py
           pip install pytest
           pytest
-      # - name: build docker image
-      #   run : 
-      #     docker build -t test_image_ynov/test:latest .
-      # - name: run docker image
-      #   run : 
-      #     docker run test_image_ynov/test:latest
-      # - name: docker login
-      #   env:
-      #     USERNAME: ${{secrets.DOCKER_USERNAME}}
-      #     PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-      #   run : |
-      #     docker login -u $USERNAME -p $PASSWORD
+      - name: docker login
+        env:
+          USERNAME: ${{secrets.DOCKER_USERNAME}}
+          PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        run :
+          docker login -u $USERNAME -p $PASSWORD
+ 
