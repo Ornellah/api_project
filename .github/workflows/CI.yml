@@ -1,0 +1,23 @@
+name: CI
+on: [push]
+jobs:
+  test_build_push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run : |
+          pip install pytest
+          pytest
+      # - name: build docker image
+      #   run : 
+      #     docker build -t test_image_ynov/test:latest .
+      # - name: run docker image
+      #   run : 
+      #     docker run test_image_ynov/test:latest
+      # - name: docker login
+      #   env:
+      #     USERNAME: ${{secrets.DOCKER_USERNAME}}
+      #     PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      #   run : |
+      #     docker login -u $USERNAME -p $PASSWORD
