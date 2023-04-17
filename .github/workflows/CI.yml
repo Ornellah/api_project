@@ -17,7 +17,7 @@ jobs:
           docker run -p 5000:5000 -d test_ho
       - name: Run tests
         run :
-          # pip install flask
+          pip install flask
           python app.py
           pip install pytest
           pytest
