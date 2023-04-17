@@ -9,16 +9,16 @@ jobs:
       - uses: actions/setup-python@v2
         with: 
           python-version: "3.10"
-      # - name: build docker image
-      #   run : 
-      #     docker build -t test_ho .
-      # - name: run docker image
-      #   run : 
-      #     docker run -p 5000:5000 -d test_ho
-      # - name: Run tests
-      #   run :
-      #     pip install flask
-      #     python app.py
-      #     pip install pytest
-      #     pytest
+      - name: build docker image
+        run : 
+          docker build -t test_ho .
+      - name: run docker image
+        run : 
+          docker run -p 5000:5000 -d test_ho
+      - name: Run tests
+        run :
+          pip install flask
+          python app.py
+          pip install pytest
+          pytest
  
