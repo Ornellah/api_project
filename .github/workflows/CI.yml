@@ -20,10 +20,4 @@ jobs:
           python app.py
           pip install pytest
           pytest
-      - name: docker login
-        env:
-          USERNAME: ${{secrets.DOCKER_USERNAME}}
-          PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-        run :
-          docker login -u $USERNAME -p $PASSWORD
  
