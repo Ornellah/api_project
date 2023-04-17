@@ -5,20 +5,25 @@ jobs:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - name: dependencies install 
+        uses: actions/setup-python@v4
         with: 
           python-version: "3.10"
+          cache: 'pip' 
+      - run:
+          pip install flask
+          pip install pytest
+      - name: Run tests
+        run :
+          python app.py
+          pytest
       - name: build docker image
         run : 
           docker build -t test_ho .
       - name: run docker image
         run : 
           docker run -p 5000:5000 -d test_ho
-      - name: Run tests
-        run :
-          pip install flask==2.2.0
-          python app.py
-          pip install pytest
-          pytest
+
  
