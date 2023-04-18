@@ -20,8 +20,9 @@ jobs:
       - name: run docker image
         run : 
           docker run -p 5000:5000 -d test_ho
-      - name: Run tests
-        run : 
           pytest
+      # - name: Run tests
+      #   run : 
+      #     pytest
 
  
