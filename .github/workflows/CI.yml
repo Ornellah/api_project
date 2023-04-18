@@ -12,17 +12,17 @@ jobs:
         with: 
           python-version: "3.10"
           cache: 'pip' 
-      - run:
-          pip install -r requirements.txt
+      - run: |
+          pip install -r requirements.txt 
+          npm install -g wait-on
       - name: build docker image
         run : 
           docker build -t test_ho .
       - name: run docker image
-        run : |
-          docker run -p 5000:5000 -d test_ho &
-          pytest
-      # - name: Run tests
-      #   run : 
-      #     pytest
+        run :
+          docker run -p 5000:5000 -d test_ho
+      - name: Run tests
+        run : 
+          wait-on http://127.0.0.1:5000/ && pytest
 
  

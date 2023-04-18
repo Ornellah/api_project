@@ -6,6 +6,5 @@ RUN pip install scikit-learn==0.24.2
 RUN pip install sklearn
 RUN pip install scipy
 RUN pip install requests
-RUN pip install pytest
 COPY . .
 CMD ["python3","app.py"]
