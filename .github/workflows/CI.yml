@@ -22,7 +22,6 @@ jobs:
       #     docker run -p 5000:5000 -d test_ho
       - name: Run tests
         run : |
-          python app.py &
-          pytest
+          python app.py & pytest
 
  
