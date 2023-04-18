@@ -35,4 +35,25 @@ jobs:
         run : 
           wait-on http://127.0.0.1:5000/ && pytest
 
+  run-linters:
+    needs: [install-dependencies,unit-tests]
+    name: Linter 💄
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - name: Install Python dependencies
+        run: pip install black flake8
+      - name: Run linters
+        uses: wearerequired/lint-action@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          black: true
+          flake8: true
+
  
