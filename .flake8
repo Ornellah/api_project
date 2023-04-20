@@ -1,0 +1,11 @@
+[flake8]
+ignore = E266
+per-file-ignores =
+    app.py: E501,
+exclude =
+    .git,
+    test_unit/__pycache__,
+    .github,
+    .pytest_cache,
+    datasets,
+    models

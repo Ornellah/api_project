@@ -1,7 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 import pickle
 import numpy as np
-import json
 
 app = Flask(__name__)
 model_titanic = pickle.load(
