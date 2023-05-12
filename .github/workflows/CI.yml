@@ -68,4 +68,24 @@ jobs:
           black: true
           flake8: true
 
+  deploy:
+    needs: [run-linters, unit-tests]
+    name: Deploy 🚀
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    env:
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7.23.0
+      - name: Link the project to Netlify
+        run: netlify deploy --dir=public --prod --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN
+
+
  
