@@ -1,7 +1,7 @@
 [flake8]
 ignore = E266
 per-file-ignores =
-    app.py: E501,
+    index.py: E501,
 exclude =
     .git,
     test_unit/__pycache__,
