@@ -46,7 +46,7 @@ jobs:
           wait-on http://127.0.0.1:5000/ && pytest
 
   run-linters:
-    needs: [install-dependencies,unit-tests]
+    needs: [install-dependencies]
     name: Run linter 💄
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
