@@ -1,0 +1,9 @@
+algos
+clients
+datasets
+models/model_iris_unamed.pkl
+models/model_titanic_unamed.pkl
+test_unit
+Dockerfile
+.pytest_cache
+.flake8
