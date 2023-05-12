@@ -71,6 +71,7 @@ jobs:
     needs: [run-linters, unit-tests]
     name: Deploy 🚀
     runs-on: ubuntu-latest
+    environment: Prod
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     env:
       NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
@@ -83,8 +84,8 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 7.23.0
-      - name: Link the project to Netlify
-        run: netlify deploy --dir=public --prod --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN
+      - name: Deploy to Netlify
+        run: netlify deploy --dir=templates --prod --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN
 
 
  
