@@ -23,6 +23,11 @@ jobs:
     name: Run tests 🧪
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    services:
+      app:
+        image: 280720/api_project:latest
+        ports:
+          - 5000:5000
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -35,12 +40,6 @@ jobs:
       - run: |
           pip install -r requirements.txt 
           npm install -g wait-on
-      - name: build docker image
-        run : 
-          docker build -t test_ho .
-      - name: run docker image
-        run :
-          docker run -p 5000:5000 -d test_ho
       - name: Run tests
         run : 
           wait-on http://127.0.0.1:5000/ && pytest
