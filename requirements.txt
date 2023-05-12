@@ -1,2 +1,8 @@
 requests
 pytest
+flask
+pandas
+numpy
+scikit-learn==0.24.2
+sklearn
+scipy
