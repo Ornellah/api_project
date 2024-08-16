@@ -10,7 +10,9 @@ La CI/CD a été implémentée mais sera potentiellement revue.
 Le projet a été déployé sur vercel avec succès dans son ancienne version mais était trop volumineux (dû aux données et modèles et à l'utilisation de la version gratuite).     
      
 ## A venir
-Le prochain ajout sera la modification de la CI/CD pour tenir compte de la suppression de vercel du projet.     
+Le prochain ajout sera la modification de la CI/CD pour tenir compte de la suppression de vercel du projet ainsi que l'apparition d'une erreur lors de l'installation des dépendances.   
+La configuration de vercel sera supprimée du projet.     
+Les dépendances seront mises à jour pour tenir compte de la sécurité.    
     
 ## Prévision
 Le projet a été dockerisé auparavant avant la refonte de l'api et doit être revue.     
