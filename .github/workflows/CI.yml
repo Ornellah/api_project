@@ -43,7 +43,7 @@ jobs:
       - name: Start server
         run: python index.py &    
       - name: Wait for app to be ready
-        run: wait-on http://localhost:5000
+        run: wait-on http://127.0.0.1:5000
       - name: Run tests
         run: pytest
 
