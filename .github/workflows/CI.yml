@@ -61,7 +61,7 @@ jobs:
       - name: Install Python dependencies
         run: pip install black flake8
       - name: Run linters
-        uses: wearerequired/lint-action@v2
+        uses: wearerequired/lint-action@v2.3.0
         with:
           github_token: ${{ secrets.github_token }}
           black: true
