@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.12
 RUN pip install flask
 RUN pip install pandas
 RUN pip install numpy
