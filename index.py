@@ -12,10 +12,13 @@ model_iris = pickle.load(open("./models/model_iris_nom.pkl", "rb"))
 ####### Avec interface ########
 
 
-@app.route("/")  # Homepage
+@app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("home.html")
 
+@app.route("/index")
+def index():
+    return render_template("index.html")
 
 @app.route("/page_iris")
 def iris():
