@@ -16,9 +16,9 @@
         <div class="login">
             <h1>Predict Survived</h1>
               <form action="{{ url_for('predict_titanic')}}"method="post">
-                  <input type="number" name="pclass" placeholder="pclass" required="required" />
-                  <input type="number" name="sex" placeholder="sex" required="required" />
-                  <input type="number" name="age" placeholder="age" required="required" />
+                  <input type="number" min="0" name="pclass" placeholder="pclass" required="required" />
+                  <input type="number" min="0" max="1" name="sex" placeholder="sex" required="required" />
+                  <input type="number" min="0" name="age" placeholder="age" required="required" />
                   <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
               </form>
               <p>{{ prediction_text }}</p>

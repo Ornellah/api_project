@@ -16,10 +16,10 @@
         <div class="login">
             <h1>Predict Iris Class</h1>
             <form action="{{ url_for('predict_iris')}}"method="post">
-                <input type="number" name="sepal_length" placeholder="Sepal Length (cm)" required="required" />
-                <input type="number" name="sepal_width" placeholder="Sepal Width (cm)" required="required" />
-                <input type="number" name="petal_length" placeholder="Petal Length (cm)" required="required" />
-                <input type="number" name="petal_width" placeholder="Petal Width (cm)" required="required" />
+                <input type="number" min="0" step="0.01" name="sepal_length" placeholder="Sepal Length (cm)" required="required" />
+                <input type="number" min="0" step="0.01" name="sepal_width" placeholder="Sepal Width (cm)" required="required" />
+                <input type="number" min="0" step="0.01" name="petal_length" placeholder="Petal Length (cm)" required="required" />
+                <input type="number" min="0" step="0.01" name="petal_width" placeholder="Petal Width (cm)" required="required" />
                 <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
             </form>
             <p>{{ prediction_text }}</p>

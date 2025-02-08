@@ -3,9 +3,7 @@ import pickle
 import numpy as np
 
 app = Flask(__name__)
-model_titanic = pickle.load(
-    open("./models/model_titanic_nom.pkl", "rb")
-)  # loading the trained model
+model_titanic = pickle.load(open("./models/model_titanic_nom.pkl", "rb"))
 model_iris = pickle.load(open("./models/model_iris_nom.pkl", "rb"))
 
 
@@ -32,34 +30,26 @@ def titanic():
 
 @app.route("/predict_iris", methods=["POST"])
 def predict_iris():
-    """
-    For rendering results on HTML GUI
-    """
 
-    # retrieving values from form
     init_features = [float(x) for x in request.form.values()]
     final_features = [np.array(init_features)]
 
-    prediction = model_iris.predict(final_features)  # making prediction
+    prediction = model_iris.predict(final_features)
 
     return render_template(
         "predict_iris.html", prediction_text="Predicted Class: {}".format(prediction)
-    )  # rendering the predicted result
+    )
 
 
 @app.route("/predict_titanic", methods=["POST"])
 def predict_titanic():
-    """
-    For rendering results on HTML GUI
-    """
 
-    # retrieving values from form
     features = [[int(x) for x in request.form.values()]]
-    prediction = model_titanic.predict(features)  # making prediction
+    prediction = model_titanic.predict(features)
 
     return render_template(
         "predict_titanic.html", prediction_text="Predicted Class: {}".format(prediction)
-    )  # rendering the predicted result
+    )
 
 
 ####### Sans interface ########
